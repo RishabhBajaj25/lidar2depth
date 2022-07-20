@@ -1,5 +1,6 @@
 <launch>
-  <rosparam command="load" file="$(find mapping_kit)/config/r3live_config.yaml" />
+  <!-- <rosparam command="load" file="$(find mapping_kit)/config/r3live_config.yaml" /> -->
+  <rosparam command="load" file="$(find mapping_kit)/config/r3live_ig4_config.yaml" />
 
   <node pkg="image_transport" type="republish" name="uncompress_l2d" args="compressed in:=/intel/color/image_raw_10hz out:=/intel/color/image_raw_10hz_uncompressed" />
 
@@ -20,5 +21,5 @@
   <node name="test_projection" pkg="lidar2depth" type="test_projection.py" output="screen">
     <remap from="image" to="livox/color_sync/image_rect"/>
     <remap from="depth" to="livox/depth"/>
-  </node>  
+  </node>
 </launch>
